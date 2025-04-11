@@ -1,16 +1,10 @@
 import { TriangleUpIcon } from "@radix-ui/react-icons";
 
-type FeedbackItem = {
-  upvoteCount: number;
-  badgeLetter: string;
-  companyName: string;
-  text: string;
-  daysAgo: number;
-};
+import { TFeedbackItem } from "../lib/types";
 
 type FeedbackItemProps = {
-  feedbackItem: FeedbackItem;
-}
+  feedbackItem: TFeedbackItem;
+};
 
 export default function FeedbackItem({ feedbackItem }: FeedbackItemProps) {
   return (
@@ -25,13 +19,11 @@ export default function FeedbackItem({ feedbackItem }: FeedbackItemProps) {
       </div>
 
       <div>
-        <p>{feedbackItem.companyName}</p>
-        <p>
-          {feedbackItem.text}
-        </p>
+        <p>{feedbackItem.company}</p>
+        <p>{feedbackItem.text}</p>
       </div>
 
-      <p>{feedbackItem.daysAgo}</p>
+      <p>{feedbackItem.daysAgo === 0 ? "NEW" : `${feedbackItem.daysAgo}d`}</p>
     </li>
-  )
+  );
 }
